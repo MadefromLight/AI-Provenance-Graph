@@ -1,0 +1,2 @@
+import test from "node:test";import assert from "node:assert/strict";import {ProvenanceGraph,nodeId} from "../src/index.js";
+test("builds and traces provenance",()=>{const g=new ProvenanceGraph();const a=nodeId("agent","a"),t=nodeId("tool","t");g.addNode({id:a,kind:"agent",label:"a"});g.addNode({id:t,kind:"tool",label:"t"});g.addEdge({from:a,to:t,relation:"invoked"});assert.equal(g.trace(a).length,2);});
